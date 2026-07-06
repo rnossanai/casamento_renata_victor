@@ -13,7 +13,7 @@
      As imagens ficam na raiz do repositório, junto com este arquivo.
      ============================================================ */
   :root{
-    --hero-image: url('hero-capa.jpg');            /* 📷 foto de capa (computador) */
+    --hero-image: url('hero-capa.jpg');            /* 📷 foto de capa, sem texto (computador) */
     --hero-image-mobile: url('hero-capa-mobile.jpg'); /* 📱 foto de capa (celular) */
     --intro-bg-image: url('textura-papel-grande.jpeg'); /* 📄 fundo da seção da frase + contagem regressiva */
     --intro-bg-size: 700px auto;                   /* tamanho da textura da contagem (aumente/diminua o 700px) */
@@ -99,34 +99,39 @@
   /* ===== HERO ===== */
   .hero{
     position:relative;min-height:100vh;
-    background:#0c0e0a var(--hero-image) center center / cover no-repeat;
+    background:
+      linear-gradient(180deg, rgba(10,12,8,0.1) 0%, rgba(10,12,8,0.02) 45%, rgba(8,10,6,0.4) 78%, rgba(6,8,4,0.72) 100%),
+      #0c0e0a var(--hero-image) center center / cover no-repeat;
+    display:flex;flex-direction:column;justify-content:flex-end;align-items:center;
+    padding:0 24px 64px;
   }
-  .hero-mobile-text{display:none;}
+  .hero-text{
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+    position:relative;z-index:2;
+  }
+  .hero-text .hm-divider{width:190px;opacity:.85;margin-bottom:10px;}
+  .hero-text .hm-divider svg{width:100%;height:auto;display:block;}
+  .hero-text .hm-date{
+    font-family:'Cormorant Garamond', serif;font-weight:400;
+    font-size:clamp(56px,7.5vw,104px);letter-spacing:0.04em;color:var(--white);line-height:1;
+  }
+  .hero-text .hm-names{
+    margin-top:18px;
+    font-family:'Jost', sans-serif;font-weight:400;
+    font-size:clamp(14px,1.5vw,22px);letter-spacing:0.3em;text-transform:uppercase;
+    color:#eeeadb;
+  }
   @media(max-width:700px){
     .hero{
       min-height:100svh;
       background:
         linear-gradient(180deg, rgba(10,12,8,0.15) 0%, rgba(10,12,8,0.05) 40%, rgba(8,10,6,0.55) 75%, rgba(6,8,4,0.9) 100%),
         #0c0e0a var(--hero-image-mobile) center 30% / cover no-repeat;
-      background-blend-mode:normal;
-      display:flex;flex-direction:column;justify-content:flex-end;align-items:center;
       padding:0 20px 72px;
     }
-    .hero-mobile-text{
-      display:flex;flex-direction:column;align-items:center;text-align:center;
-      position:relative;z-index:2;
-    }
-    .hero-mobile-text .hm-divider{width:120px;opacity:.85;margin-bottom:14px;}
-    .hero-mobile-text .hm-divider svg{width:100%;height:auto;display:block;}
-    .hero-mobile-text .hm-date{
-      font-family:'Cormorant Garamond', serif;font-weight:400;
-      font-size:clamp(44px,13vw,58px);letter-spacing:0.04em;color:var(--white);line-height:1;
-    }
-    .hero-mobile-text .hm-names{
-      margin-top:14px;
-      font-family:'Jost', sans-serif;font-size:11px;letter-spacing:0.26em;text-transform:uppercase;
-      color:#e9e5d6;
-    }
+    .hero-text .hm-divider{width:120px;margin-bottom:14px;}
+    .hero-text .hm-date{font-size:clamp(44px,13vw,58px);}
+    .hero-text .hm-names{font-size:12.5px;letter-spacing:0.24em;margin-top:14px;}
   }
 
   /* ===== QUOTE + COUNTDOWN ===== */
@@ -396,8 +401,8 @@
 
 <!-- HERO — foto de capa com nomes e data -->
 <section class="hero" id="inicio" aria-label="Renata Ossanai & Victor Cescani — 24.10.2026 — Porto Alegre">
-  <!-- Texto que aparece só no celular (no computador, a data e os nomes já estão na foto) -->
-  <div class="hero-mobile-text">
+  <!-- Data e nomes desenhados por cima da foto (nítidos em qualquer tela) -->
+  <div class="hero-text">
     <div class="hm-divider">
       <svg viewBox="0 0 140 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M2 14 C 20 4, 35 20, 50 12 C 62 6, 70 16, 70 16 C 70 16, 78 6, 90 12 C 105 20, 120 4, 138 14" stroke="#e9e5d6" stroke-width="1"/>
