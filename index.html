@@ -15,6 +15,8 @@
   :root{
     --hero-image: url('hero-capa.jpg');            /* 📷 foto de capa (computador) */
     --hero-image-mobile: url('hero-capa-mobile.jpg'); /* 📱 foto de capa (celular) */
+    --intro-bg-image: url('textura-papel-grande.jpg'); /* 📄 fundo da seção da frase + contagem regressiva */
+    --intro-bg-size: 700px auto;                   /* tamanho da textura da contagem (aumente/diminua o 700px) */
     --venue-bg-image: url('textura-papel.jpg');    /* 📄 fundo da seção Programação e Localização */
     --venue-bg-size: 520px auto;                   /* tamanho da textura (aumente/diminua o 520px) */
   }
@@ -128,7 +130,15 @@
   }
 
   /* ===== QUOTE + COUNTDOWN ===== */
-  .intro-section{padding:130px 24px 140px;text-align:center;background:var(--cream);}
+  .intro-section{
+    padding:130px 24px 140px;text-align:center;
+    background-color:var(--cream);
+    background-image:
+      linear-gradient(180deg, rgba(244,242,234,0.55), rgba(244,242,234,0.62)),
+      var(--intro-bg-image);
+    background-size:auto, var(--intro-bg-size);
+    background-repeat:no-repeat, repeat;
+  }
   .intro-quote{
     font-family:'Cormorant Garamond', serif;font-style:italic;font-weight:500;
     font-size:clamp(22px,2.6vw,30px);color:var(--ink-deep);
@@ -357,7 +367,7 @@
       <li><a href="#presentes">Presentes</a></li>
       <li><a href="#rsvp">Confirmar Presença</a></li>
     </ul>
-    <a href="#rsvp" class="nav-rsvp">RSVP</a>
+    <a href="#rsvp" class="nav-rsvp">Confirmar</a>
     <button class="burger" id="burgerBtn">☰</button>
   </div>
 </nav>
