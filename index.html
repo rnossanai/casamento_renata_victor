@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renata &amp; Victor — 24.10.2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     ⚙️ CONFIGURAÇÕES FÁCEIS DE EDITAR
+     Troque só os nomes dos arquivos abaixo para mudar os fundos.
+     As imagens ficam na pasta "images/".
+     ============================================================ */
+  :root{
+    --hero-image: url('images/hero-capa.jpg');        /* 📷 foto de capa */
+    --venue-bg-image: url('images/textura-papel.jpg'); /* 📄 fundo da seção Programação e Localização */
+    --venue-bg-size: 520px auto;                       /* tamanho da textura (aumente/diminua o 520px) */
+  }
+
+  :root{
+    --cream:#f4f2ea;
+    --cream-deep:#efede3;
+    --ink:#3d4a30;
+    --ink-deep:#2e3626;
+    --green-dark:#3c4534;
+    --green-darker:#333b2d;
+    --white:#fbf9f3;
+    --line:rgba(61,74,48,0.3);
+    --line-light:rgba(251,249,243,0.28);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--cream);color:var(--ink-deep);
+    font-family:'EB Garamond', serif;font-size:18px;line-height:1.65;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Cormorant Garamond', serif;font-weight:500;margin:0;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1200px;margin:0 auto;padding:0 32px;}
+
+  .eyebrow{
+    font-family:'Jost', sans-serif;font-weight:400;
+    font-size:12px;letter-spacing:0.3em;text-transform:uppercase;
+    color:var(--ink);text-align:center;
+  }
+  .eyebrow::before{content:"—\00a0\00a0";}
+  .eyebrow::after{content:"\00a0\00a0—";}
+
+  .diamonds{
+    text-align:center;font-size:14px;letter-spacing:0.6em;color:var(--ink-deep);
+  }
+
+  /* ===== NAV ===== */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:transparent;transition:background .4s ease, box-shadow .4s ease;
+  }
+  nav.scrolled{background:rgba(244,242,234,0.96);box-shadow:0 1px 0 rgba(61,74,48,0.12);}
+  .nav-inner{
+    max-width:1500px;margin:0 auto;padding:24px 44px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .nav-links{display:flex;align-items:center;gap:44px;list-style:none;margin:0;padding:0;}
+  .nav-links a{
+    font-family:'Jost', sans-serif;font-weight:400;
+    font-size:12px;letter-spacing:0.28em;text-transform:uppercase;
+    color:var(--white);transition:color .35s ease, opacity .2s;
+  }
+  nav.scrolled .nav-links a{color:var(--ink-deep);}
+  .nav-links a:hover{opacity:.65;}
+  .nav-rsvp{
+    font-family:'Jost', sans-serif;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;
+    color:var(--white);border:1px solid rgba(251,249,243,0.7);border-radius:999px;
+    padding:12px 34px;transition:.35s;
+  }
+  nav.scrolled .nav-rsvp{color:var(--ink-deep);border-color:rgba(61,74,48,0.5);}
+  .nav-rsvp:hover{background:var(--white);color:var(--ink-deep);}
+  nav.scrolled .nav-rsvp:hover{background:var(--ink-deep);color:var(--white);}
+  .burger{display:none;background:none;border:none;font-size:26px;color:var(--white);cursor:pointer;transition:color .35s;}
+  nav.scrolled .burger{color:var(--ink-deep);}
+
+  @media(max-width:900px){
+    .nav-links{
+      position:fixed;top:0;left:0;right:0;bottom:0;background:var(--green-darker);
+      flex-direction:column;justify-content:center;gap:30px;
+      transform:translateX(100%);transition:transform .3s ease;
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-links a{color:var(--white) !important;font-size:14px;}
+    .nav-rsvp{display:none;}
+    .burger{display:block;position:relative;z-index:60;}
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;min-height:100vh;
+    background:#0c0e0a var(--hero-image) center center / cover no-repeat;
+  }
+  @media(max-width:700px){
+    .hero{background-position:62% center;}
+  }
+
+  /* ===== QUOTE + COUNTDOWN ===== */
+  .intro-section{padding:130px 24px 140px;text-align:center;background:var(--cream);}
+  .intro-quote{
+    font-family:'Cormorant Garamond', serif;font-style:italic;font-weight:500;
+    font-size:clamp(22px,2.6vw,30px);color:var(--ink-deep);
+    max-width:640px;margin:34px auto 0;line-height:1.55;
+  }
+  .countdown-label{
+    margin-top:120px;
+    font-family:'Jost', sans-serif;font-size:12px;letter-spacing:0.3em;text-transform:uppercase;color:var(--ink-deep);
+  }
+  .countdown-label::before{content:"—\00a0\00a0";}
+  .countdown-label::after{content:"\00a0\00a0—";}
+  .countdown{
+    margin-top:18px;
+    font-family:'Cormorant Garamond', serif;font-weight:600;
+    font-size:clamp(40px,6.5vw,68px);color:var(--ink-deep);letter-spacing:0.02em;
+  }
+
+  /* ===== PROGRAMAÇÃO ===== */
+  .venue-section{
+    padding:110px 0 130px;
+    background-color:var(--cream);
+    background-image:
+      linear-gradient(180deg, rgba(244,242,234,0.62), rgba(244,242,234,0.7)),
+      var(--venue-bg-image);
+    background-size:auto, var(--venue-bg-size);
+    background-repeat:no-repeat, repeat;
+  }
+  .venue-section h2.sec-title{
+    text-align:center;font-size:clamp(36px,5vw,56px);font-weight:500;margin-top:14px;
+  }
+  .venue-rows{max-width:1060px;margin:90px auto 0;display:flex;flex-direction:column;gap:110px;}
+  .venue-row{
+    display:grid;grid-template-columns:180px 1fr 340px;gap:44px;align-items:center;
+  }
+  @media(max-width:900px){
+    .venue-row{grid-template-columns:1fr;gap:22px;text-align:center;}
+  }
+  .venue-time{
+    font-family:'Cormorant Garamond', serif;font-weight:500;
+    font-size:clamp(44px,5vw,58px);color:var(--ink-deep);
+  }
+  .venue-info h3{font-size:28px;font-weight:500;margin-bottom:10px;}
+  .venue-info p{margin:0 0 22px;font-size:16.5px;color:#4b543e;max-width:480px;}
+  @media(max-width:900px){.venue-info p{margin-left:auto;margin-right:auto;}}
+  .btn-outline{
+    display:inline-block;font-family:'Jost', sans-serif;font-size:12px;letter-spacing:0.26em;
+    text-transform:uppercase;color:var(--ink-deep);
+    border:1px solid rgba(61,74,48,0.55);border-radius:999px;padding:14px 34px;
+    transition:.3s;background:transparent;cursor:pointer;
+  }
+  .btn-outline:hover{background:var(--ink-deep);color:var(--white);}
+  .venue-photo{
+    width:100%;aspect-ratio:4/3;object-fit:cover;display:block;
+  }
+
+  /* ===== REGISTRY ===== */
+  .registry-section{
+    position:relative;overflow:hidden;
+    background:var(--green-dark);color:var(--white);
+    padding:110px 0 130px;
+  }
+  .registry-watermark{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    font-family:'Cormorant Garamond', serif;font-style:italic;font-weight:500;
+    font-size:clamp(200px,30vw,460px);color:rgba(251,249,243,0.05);
+    pointer-events:none;white-space:nowrap;user-select:none;
+  }
+  .registry-section .eyebrow{color:#cfd3bf;}
+  .registry-section h2.sec-title{
+    text-align:center;font-size:clamp(36px,5vw,56px);font-weight:500;color:var(--white);margin-top:14px;
+  }
+  .registry-intro{
+    max-width:640px;margin:26px auto 0;text-align:center;font-size:16.5px;color:#d9dccb;
+  }
+  .gift-grid{
+    position:relative;z-index:2;
+    max-width:1100px;margin:70px auto 0;padding:0 32px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  }
+  @media(max-width:960px){.gift-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:640px){.gift-grid{grid-template-columns:1fr;}}
+  .gift-card{
+    border:1px solid var(--line-light);background:rgba(0,0,0,0.04);
+    padding:20px 20px 18px;display:flex;flex-direction:column;
+  }
+  .gift-photo{
+    width:100%;aspect-ratio:3/2;object-fit:cover;margin-bottom:16px;
+    filter:saturate(0.9);
+  }
+  .gift-card h4{
+    font-family:'Cormorant Garamond', serif;font-weight:500;
+    font-size:20px;margin:0 0 8px;color:var(--white);line-height:1.3;
+  }
+  .gift-card .gift-desc{font-size:14px;line-height:1.55;color:#cfd3bf;margin:0 0 18px;flex:1;}
+  .gift-price{
+    font-family:'EB Garamond', serif;font-weight:500;font-size:16px;color:var(--white);
+    margin-bottom:14px;
+  }
+  .gift-pay{
+    border-top:1px solid var(--line-light);padding-top:12px;
+    display:flex;align-items:flex-end;justify-content:space-between;gap:10px;
+  }
+  .gift-pay .pay-label{
+    font-family:'Jost', sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#b9bda8;
+    display:block;margin-bottom:4px;
+  }
+  .gift-pay .pix-key{font-family:'Jost', sans-serif;font-size:12px;letter-spacing:0.1em;color:var(--white);}
+  .copy-btn{
+    background:none;border:none;cursor:pointer;padding:3px 2px;
+    font-family:'Jost', sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#cfd3bf;
+    transition:.2s;
+  }
+  .copy-btn:hover{color:var(--white);}
+  .card-alt{
+    margin-top:8px;font-size:11.5px;font-style:italic;color:#a9ad97;
+  }
+
+  /* ===== POLAROIDS ===== */
+  .polaroid-section{
+    padding:100px 24px 110px;background:var(--cream);
+    display:flex;justify-content:center;gap:56px;flex-wrap:wrap;align-items:center;
+  }
+  .polaroid{
+    background:#fdfcf8;padding:12px 12px 44px;
+    box-shadow:0 14px 34px -16px rgba(43,53,33,0.32), 0 3px 10px rgba(43,53,33,0.07);
+    width:min(240px, 74vw);position:relative;
+  }
+  .polaroid img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;}
+  .polaroid .pol-caption{
+    position:absolute;left:14px;bottom:16px;
+    font-family:'Jost', sans-serif;font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:#9a9d8c;
+  }
+  .polaroid .pol-tag{
+    position:absolute;right:14px;bottom:16px;
+    font-family:'Jost', sans-serif;font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:#b8bba9;
+  }
+  .polaroid.tilt-left{transform:rotate(-2.4deg);}
+  .polaroid.tilt-right{transform:rotate(2.2deg) translateY(16px);}
+  @media(max-width:820px){
+    .polaroid.tilt-right{transform:rotate(2.2deg);}
+    .polaroid-section{gap:40px;}
+  }
+
+  /* ===== RSVP ===== */
+  .rsvp-section{
+    padding:150px 24px 170px;background:var(--cream-deep);text-align:center;
+  }
+  .rsvp-section .diamonds{color:#b3b6a3;}
+  .rsvp-title{
+    font-family:'Cormorant Garamond', serif;font-weight:500;
+    font-size:clamp(38px,5.6vw,64px);line-height:1.25;color:var(--ink-deep);
+    max-width:760px;margin:34px auto 56px;
+  }
+  .rsvp-btn{
+    display:inline-block;font-family:'Jost', sans-serif;font-size:13px;letter-spacing:0.26em;
+    text-transform:uppercase;color:var(--ink-deep);
+    border:1px solid rgba(61,74,48,0.55);border-radius:999px;padding:18px 46px;
+    transition:.3s;background:transparent;
+  }
+  .rsvp-btn:hover{background:var(--ink-deep);color:var(--white);}
+
+  /* ===== FOOTER ===== */
+  footer{
+    text-align:center;padding:42px 24px;background:var(--ink-deep);color:#9aa085;
+    font-size:12px;letter-spacing:0.1em;
+  }
+  footer .fmono{font-family:'Cormorant Garamond',serif;font-style:italic;color:#c8cdb0;font-size:16px;display:block;margin-bottom:8px;}
+
+  .toast{
+    position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);
+    background:var(--ink-deep);color:var(--white);padding:12px 22px;font-size:14px;
+    opacity:0;pointer-events:none;transition:.3s;z-index:100;letter-spacing:.04em;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <div class="nav-inner">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#historia">Nossa História</a></li>
+      <li><a href="#programacao">Programação</a></li>
+      <li><a href="#presentes">Presentes</a></li>
+      <li><a href="#rsvp">Confirmar Presença</a></li>
+    </ul>
+    <a href="#rsvp" class="nav-rsvp">RSVP</a>
+    <button class="burger" id="burgerBtn">☰</button>
+  </div>
+</nav>
+
+<!-- HERO — foto de capa com nomes e data -->
+<section class="hero" id="inicio" aria-label="Renata Ossanai & Victor Cescani — 24.10.2026 — Porto Alegre"></section>
+
+<!-- QUOTE + CONTAGEM REGRESSIVA -->
+<section class="intro-section">
+  <div class="diamonds">◆ ◆ ◆</div>
+  <p class="intro-quote">Criamos este espaço para compartilhar com vocês cada detalhe até o nosso grande dia.</p>
+  <div class="countdown-label">Contagem Regressiva</div>
+  <div class="countdown" id="countdown">—</div>
+</section>
+
+<!-- PROGRAMAÇÃO E LOCALIZAÇÃO -->
+<section class="venue-section" id="programacao">
+  <div class="container">
+    <div class="eyebrow">O Grande Dia</div>
+    <h2 class="sec-title">Programação e Localização</h2>
+
+    <div class="venue-rows">
+      <div class="venue-row">
+        <div class="venue-time">18:30</div>
+        <div class="venue-info">
+          <h3>Cerimônia Religiosa</h3>
+          <p>A celebração acontecerá na Igreja Santa Teresinha e Paróquia do Santíssimo Sacramento, no coração do bairro Bom Fim, localizada na Av. José Bonifácio, 645, em Porto Alegre.</p>
+          <a class="btn-outline" href="https://www.google.com/maps/search/?api=1&query=Igreja+Santa+Teresinha+Par%C3%B3quia+do+Sant%C3%ADssimo+Sacramento+Av.+Jos%C3%A9+Bonif%C3%A1cio+645+Porto+Alegre" target="_blank" rel="noopener">Ver no mapa</a>
+        </div>
+        <div>
+          <img class="venue-photo" src="images/igreja.jpg" alt="Interior da Igreja Santa Teresinha">
+        </div>
+      </div>
+
+      <div class="venue-row">
+        <div class="venue-time">20:00</div>
+        <div class="venue-info">
+          <h3>Recepção e Festa</h3>
+          <p>Após a cerimônia, receberemos nossos convidados no Salão Laureados, do Grêmio Náutico União – Sede Alto Petrópolis, localizado na Rua João Obino, 300.</p>
+          <a class="btn-outline" href="https://www.google.com/maps/search/?api=1&query=Gr%C3%AAmio+N%C3%A1utico+Uni%C3%A3o+Sede+Alto+Petr%C3%B3polis+Rua+Jo%C3%A3o+Obino+300+Porto+Alegre" target="_blank" rel="noopener">Ver no mapa</a>
+        </div>
+        <div>
+          <img class="venue-photo" src="images/gnu.png" alt="Grêmio Náutico União — Sede Alto Petrópolis">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LISTA DE PRESENTES -->
+<section class="registry-section" id="presentes">
+  <div class="registry-watermark">Registry</div>
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="eyebrow">Lista de Presentes</div>
+    <h2 class="sec-title">Nossa lista de presentes</h2>
+    <p class="registry-intro">Nossa lua de mel será em Curaçao, um destino que escolhemos com muito carinho para celebrar o início desta nova etapa. Tudo o que está aqui vamos viver de verdade — cada presente fará parte das lembranças que levaremos conosco para sempre.</p>
+  </div>
+
+  <div class="gift-grid">
+
+    <div class="gift-card">
+      <img class="gift-photo" src="https://images.unsplash.com/photo-1612547036242-77002603e5aa?w=700&q=80&auto=format&fit=crop" alt="Câmera polaroid vintage">
+      <h4>Fotos Polaroid para Registrar Tudo</h4>
+      <p class="gift-desc">Para guardarmos os melhores momentos em papel, na hora.</p>
+      <div class="gift-price">R$ 110</div>
+      <div class="gift-pay">
+        <div><span class="pay-label">Pagamento via Pix</span><span class="pix-key">03731389037</span></div>
+        <button class="copy-btn" onclick="copyPix(this)" data-key="03731389037">Copy</button>
+      </div>
+      <div class="card-alt">também aceitamos cartão de crédito</div>
+    </div>
+
+    <div class="gift-card">
+      <img class="gift-photo" src="https://images.unsplash.com/photo-1505164294036-5fad98506d20?w=700&q=80&auto=format&fit=crop" alt="Transfer do aeroporto">
+      <h4>Shuttle do Aeroporto</h4>
+      <p class="gift-desc">Um transfer tranquilo, sem estresse, direto ao hotel.</p>
+      <div class="gift-price">R$ 180</div>
+      <div class="gift-pay">
+        <div><span class="pay-label">Pagamento via Pix</span><span class="pix-key">03731389037</span></div>
+        <button class="copy-btn" onclick="copyPix(this)" data-key="03731389037">Copy</button>
+      </div>
+      <div class="card-alt">também aceitamos cartão de crédito</div>
+    </div>
+
+    <div class="gift-card">
+      <img class="gift-photo" src="https://images.unsplash.com/photo-1661954864180-e61dea14208a?w=700&q=80&auto=format&fit=crop" alt="Taças e garrafa no quarto">
+      <h4>Garrafa de Champagne no Quarto</h4>
+      <p class="gift-desc">Um brinde especial esperando por nós na chegada.</p>
+      <div class="gift-price">R$ 210</div>
+      <div class="gift-pay">
+        <div><span class="pay-label">Pagamento via Pix</span><span class="pix-key">03731389037</span></div>
+        <button class="copy-btn" onclick="copyPix(this)" data-key="03731389037">Copy</button>
+      </div>
+      <div class="card-alt">também aceitamos cartão de crédito</div>
+    </div>
+
+    <div class="gift-card">
+      <img class="gift-photo" src="https://images.unsplash.com/photo-1667871124729-54ba82b9fb23?w=700&q=80&auto=format&fit=crop" alt="Estrada tropical com palmeiras">
+      <h4>Diária de Aluguel de Carro para Rodar a Ilha</h4>
+      <p class="gift-desc">Para rodarmos a ilha inteira com liberdade, no nosso ritmo.</p>
+      <div class="gift-price">R$ 250</div>
+      <div class="gift-pay">
+        <div><span class="pay-label">Pagamento via Pix</span><span class="pix-key">03731389037</span></div>
+        <button class="copy-btn" onclick="copyPix(this)" data-key="03731389037">Copy</button>
+      </div>
+      <div class="card-alt">também aceitamos cartão de crédito</div>
+    </div>
+
+    <div class="gift-card">
+      <img class="gift-photo" src="https://images.unsplash.com/photo-1542145177-4dc9b8029711?w=700&q=80&auto=format&fit=crop" alt="Fichas de cassino">
+      <h4>Noite no Cassino</h4>
+      <p class="gift-desc">Uma noite de sorte (e diversão) para fechar bem o dia.</p>
+      <div class="gift-price">R$ 310</div>
+      <div class="gift-pay">
+        <div><span class="pay-label">Pagamento via Pix</span><span class="pix-key">03731389037</span></div>
+        <button class="copy-btn" onclick="copyPix(this)" data-key="03731389037">Copy</button>
+      </div>
+      <div class="card-alt">também aceitamos cartão de crédito</div>
+    </div>
+
+    <div class="gift-card">
+      <img class="gift-photo" src="https://images.unsplash.com/photo-1581859814481-bfd944e3122f?w=700&q=80&auto=format&fit=crop" alt="Cabana à beira-mar entre palmeiras">
+      <h4>Almoço nas Praias Fora do Hotel</h4>
+      <p class="gift-desc">Para explorarmos outros cantinhos da ilha à mesa.</p>
+      <div class="gift-price">R$ 350</div>
+      <div class="gift-pay">
+        <div><span class="pay-label">Pagamento via Pix</span><span class="pix-key">03731389037</span></div>
+        <button class="copy-btn" onclick="copyPix(this)" data-key="03731389037">Copy</button>
+      </div>
+      <div class="card-alt">também aceitamos cartão de crédito</div>
+    </div>
+
+    <div class="gift-card">
+      <img class="gift-photo" src="https://images.unsplash.com/photo-1549294413-26f195200c16?w=700&q=80&auto=format&fit=crop" alt="Café da manhã com vista para o mar">
+      <h4>Café da Manhã à Beira da Praia</h4>
+      <p class="gift-desc">Um café da manhã especial com vista para o mar, logo pela manhã.</p>
+      <div class="gift-price">R$ 420</div>
+      <div class="gift-pay">
+        <div><span class="pay-label">Pagamento via Pix</span><span class="pix-key">03731389037</span></div>
+        <button class="copy-btn" onclick="copyPix(this)" data-key="03731389037">Copy</button>
+      </div>
+      <div class="card-alt">também aceitamos cartão de crédito</div>
+    </div>
+
+    <div class="gift-card">
+      <img class="gift-photo" src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=700&q=80&auto=format&fit=crop" alt="Caixa de presente com laço">
+      <h4>Presente Surpresa</h4>
+      <p class="gift-desc">Uma surpresa da lua de mel que vamos contar para vocês depois da viagem.</p>
+      <div class="gift-price">R$ 580</div>
+      <div class="gift-pay">
+        <div><span class="pay-label">Pagamento via Pix</span><span class="pix-key">03731389037</span></div>
+        <button class="copy-btn" onclick="copyPix(this)" data-key="03731389037">Copy</button>
+      </div>
+      <div class="card-alt">também aceitamos cartão de crédito</div>
+    </div>
+
+    <div class="gift-card">
+      <img class="gift-photo" src="https://images.unsplash.com/photo-1618245318763-a15156d6b23c?w=700&q=80&auto=format&fit=crop" alt="Praia paradisíaca de ilha tropical">
+      <h4>Passeio na Ilha Klein Curaçao</h4>
+      <p class="gift-desc">Um dia inteiro em uma ilha paradisíaca, só acessível de barco.</p>
+      <div class="gift-price">R$ 680</div>
+      <div class="gift-pay">
+        <div><span class="pay-label">Pagamento via Pix</span><span class="pix-key">03731389037</span></div>
+        <button class="copy-btn" onclick="copyPix(this)" data-key="03731389037">Copy</button>
+      </div>
+      <div class="card-alt">também aceitamos cartão de crédito</div>
+    </div>
+
+    <div class="gift-card">
+      <img class="gift-photo" src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=700&q=80&auto=format&fit=crop" alt="Massagem relaxante no spa">
+      <h4>Massagem no Spa para Dois</h4>
+      <p class="gift-desc">Um momento de relaxamento a dois para recarregar as energias na lua de mel.</p>
+      <div class="gift-price">R$ 880</div>
+      <div class="gift-pay">
+        <div><span class="pay-label">Pagamento via Pix</span><span class="pix-key">03731389037</span></div>
+        <button class="copy-btn" onclick="copyPix(this)" data-key="03731389037">Copy</button>
+      </div>
+      <div class="card-alt">também aceitamos cartão de crédito</div>
+    </div>
+
+    <div class="gift-card">
+      <img class="gift-photo" src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=700&q=80&auto=format&fit=crop" alt="Mesa à beira-mar">
+      <h4>Jantar Romântico na Praia</h4>
+      <p class="gift-desc">Um jantar à luz de velas, com os pés na areia, para comemorar o começo da viagem.</p>
+      <div class="gift-price">R$ 980</div>
+      <div class="gift-pay">
+        <div><span class="pay-label">Pagamento via Pix</span><span class="pix-key">03731389037</span></div>
+        <button class="copy-btn" onclick="copyPix(this)" data-key="03731389037">Copy</button>
+      </div>
+      <div class="card-alt">também aceitamos cartão de crédito</div>
+    </div>
+
+    <div class="gift-card">
+      <img class="gift-photo" src="https://images.unsplash.com/photo-1706945629188-60679cd384b3?w=700&q=80&auto=format&fit=crop" alt="Interior do avião durante o voo">
+      <h4>Milhas para a Passagem – JoJo Miles</h4>
+      <p class="gift-desc">Nos ajudem a chegar até lá com milhas para as passagens aéreas.</p>
+      <div class="gift-price">R$ 1.450</div>
+      <div class="gift-pay">
+        <div><span class="pay-label">Pagamento via Pix</span><span class="pix-key">03731389037</span></div>
+        <button class="copy-btn" onclick="copyPix(this)" data-key="03731389037">Copy</button>
+      </div>
+      <div class="card-alt">também aceitamos cartão de crédito</div>
+    </div>
+
+    <div class="gift-card">
+      <img class="gift-photo" src="https://images.unsplash.com/photo-1563911302283-d2bc129e7570?w=700&q=80&auto=format&fit=crop" alt="Resort à beira-mar">
+      <h4>The Rif – All Inclusive</h4>
+      <p class="gift-desc">Uma estadia à beira-mar para aproveitar o clima caribenho e explorar as belezas de Curaçao.</p>
+      <div class="gift-price">R$ 1.950</div>
+      <div class="gift-pay">
+        <div><span class="pay-label">Pagamento via Pix</span><span class="pix-key">03731389037</span></div>
+        <button class="copy-btn" onclick="copyPix(this)" data-key="03731389037">Copy</button>
+      </div>
+      <div class="card-alt">também aceitamos cartão de crédito</div>
+    </div>
+
+    <div class="gift-card">
+      <img class="gift-photo" src="https://images.unsplash.com/photo-1700811476977-256055428221?w=700&q=80&auto=format&fit=crop" alt="Cabine de classe executiva">
+      <h4>Upgrade Business Class</h4>
+      <p class="gift-desc">Um voo mais confortável para começarmos a lua de mel já relaxados.</p>
+      <div class="gift-price">R$ 2.400</div>
+      <div class="gift-pay">
+        <div><span class="pay-label">Pagamento via Pix</span><span class="pix-key">03731389037</span></div>
+        <button class="copy-btn" onclick="copyPix(this)" data-key="03731389037">Copy</button>
+      </div>
+      <div class="card-alt">também aceitamos cartão de crédito</div>
+    </div>
+
+    <div class="gift-card">
+      <img class="gift-photo" src="https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd?w=700&q=80&auto=format&fit=crop" alt="Resort com piscina e coqueiros">
+      <h4>Zoëtry Resort – All Inclusive</h4>
+      <p class="gift-desc">Um refúgio para desacelerar e aproveitar Curaçao com calma, boa gastronomia e muito conforto.</p>
+      <div class="gift-price">R$ 2.600</div>
+      <div class="gift-pay">
+        <div><span class="pay-label">Pagamento via Pix</span><span class="pix-key">03731389037</span></div>
+        <button class="copy-btn" onclick="copyPix(this)" data-key="03731389037">Copy</button>
+      </div>
+      <div class="card-alt">também aceitamos cartão de crédito</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- POLAROIDS — O PEDIDO -->
+<section class="polaroid-section" id="historia">
+  <div class="polaroid tilt-left">
+    <img src="images/roma-1.jpg" alt="Pedido de casamento em Roma">
+    <span class="pol-caption">Pedido de Casamento</span>
+    <span class="pol-tag">Roma</span>
+  </div>
+  <div class="polaroid tilt-right">
+    <img src="images/roma-2.jpg" alt="Sim — o anel, em Roma">
+    <span class="pol-caption">Sim</span>
+    <span class="pol-tag">Roma</span>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section class="rsvp-section" id="rsvp">
+  <div class="diamonds">◆ ◆ ◆</div>
+  <h2 class="rsvp-title">Estamos muito felizes em viver esse momento ao lado das pessoas que fazem parte da nossa história.</h2>
+  <a class="rsvp-btn" id="rsvpBtn" href="#" target="_blank" rel="noopener">Confirmar Presença</a>
+</section>
+
+<footer>
+  <span class="fmono">R &amp; V</span>
+  © 2026 Renata &amp; Victor — feito com carinho para nossos convidados
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  // Nav: transparent over hero, solid after scrolling past it
+  const mainNav = document.getElementById('mainNav');
+  function toggleNav(){
+    if(window.scrollY > window.innerHeight * 0.75){ mainNav.classList.add('scrolled'); }
+    else{ mainNav.classList.remove('scrolled'); }
+  }
+  toggleNav();
+  window.addEventListener('scroll', toggleNav);
+
+  // Mobile menu
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', ()=> navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> navLinks.classList.remove('open')));
+
+  // Countdown — formato "110d 03h 34m 23s"
+  const weddingDate = new Date('2026-10-24T18:30:00-03:00').getTime();
+  const cdEl = document.getElementById('countdown');
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function updateCountdown(){
+    let diff = weddingDate - Date.now();
+    if(diff < 0) diff = 0;
+    const d = Math.floor(diff/(1000*60*60*24));
+    const h = Math.floor((diff/(1000*60*60))%24);
+    const m = Math.floor((diff/(1000*60))%60);
+    const s = Math.floor((diff/1000)%60);
+    cdEl.textContent = `${d}d ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Copiar chave Pix
+  function showToast(msg){
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(()=> t.classList.remove('show'), 2200);
+  }
+  function copyPix(btn){
+    const key = btn.getAttribute('data-key');
+    navigator.clipboard.writeText(key).then(()=>{
+      showToast('Chave Pix copiada!');
+    }).catch(()=>{
+      showToast('Chave Pix: ' + key);
+    });
+  }
+
+  // RSVP → WhatsApp com mensagem pronta
+  const WHATS_NUMBER = "5551992786384";
+  const msg = "Olá! Gostaríamos de confirmar presença no casamento de Renata e Victor, dia 24/10/2026. Somos: ";
+  document.getElementById('rsvpBtn').href = `https://wa.me/${WHATS_NUMBER}?text=${encodeURIComponent(msg)}`;
+</script>
+
+</body>
+</html>
