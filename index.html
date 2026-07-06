@@ -13,9 +13,10 @@
      As imagens ficam na raiz do repositório, junto com este arquivo.
      ============================================================ */
   :root{
-    --hero-image: url('hero-capa.jpg');        /* 📷 foto de capa */
-    --venue-bg-image: url('textura-papel.jpg'); /* 📄 fundo da seção Programação e Localização */
-    --venue-bg-size: 520px auto;                       /* tamanho da textura (aumente/diminua o 520px) */
+    --hero-image: url('hero-capa.jpg');            /* 📷 foto de capa (computador) */
+    --hero-image-mobile: url('hero-capa-mobile.jpg'); /* 📱 foto de capa (celular) */
+    --venue-bg-image: url('textura-papel.jpg');    /* 📄 fundo da seção Programação e Localização */
+    --venue-bg-size: 520px auto;                   /* tamanho da textura (aumente/diminua o 520px) */
   }
 
   :root{
@@ -98,8 +99,32 @@
     position:relative;min-height:100vh;
     background:#0c0e0a var(--hero-image) center center / cover no-repeat;
   }
+  .hero-mobile-text{display:none;}
   @media(max-width:700px){
-    .hero{background-position:62% center;}
+    .hero{
+      min-height:100svh;
+      background:
+        linear-gradient(180deg, rgba(10,12,8,0.15) 0%, rgba(10,12,8,0.05) 40%, rgba(8,10,6,0.55) 75%, rgba(6,8,4,0.9) 100%),
+        #0c0e0a var(--hero-image-mobile) center 30% / cover no-repeat;
+      background-blend-mode:normal;
+      display:flex;flex-direction:column;justify-content:flex-end;align-items:center;
+      padding:0 20px 72px;
+    }
+    .hero-mobile-text{
+      display:flex;flex-direction:column;align-items:center;text-align:center;
+      position:relative;z-index:2;
+    }
+    .hero-mobile-text .hm-divider{width:120px;opacity:.85;margin-bottom:14px;}
+    .hero-mobile-text .hm-divider svg{width:100%;height:auto;display:block;}
+    .hero-mobile-text .hm-date{
+      font-family:'Cormorant Garamond', serif;font-weight:400;
+      font-size:clamp(44px,13vw,58px);letter-spacing:0.04em;color:var(--white);line-height:1;
+    }
+    .hero-mobile-text .hm-names{
+      margin-top:14px;
+      font-family:'Jost', sans-serif;font-size:11px;letter-spacing:0.26em;text-transform:uppercase;
+      color:#e9e5d6;
+    }
   }
 
   /* ===== QUOTE + COUNTDOWN ===== */
@@ -278,6 +303,48 @@
     opacity:0;pointer-events:none;transition:.3s;z-index:100;letter-spacing:.04em;
   }
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  /* ===== AJUSTES PARA CELULAR ===== */
+  @media(max-width:640px){
+    body{font-size:16.5px;}
+    .container{padding:0 20px;}
+    .nav-inner{padding:16px 20px;}
+
+    .intro-section{padding:84px 20px 96px;}
+    .intro-quote{font-size:20px;margin-top:26px;}
+    .countdown-label{margin-top:76px;}
+    .countdown{font-size:clamp(28px,9.5vw,44px);}
+
+    .venue-section{padding:80px 0 90px;}
+    .venue-rows{margin-top:56px;gap:70px;}
+    .venue-row{gap:16px;}
+    .venue-time{font-size:38px;}
+    .venue-info h3{font-size:24px;}
+    .venue-info p{font-size:15.5px;}
+    .btn-outline{padding:13px 30px;font-size:11px;}
+    .venue-photo{aspect-ratio:16/10;}
+
+    .registry-section{padding:80px 0 90px;}
+    .registry-intro{font-size:15px;padding:0 6px;}
+    .gift-grid{margin-top:48px;padding:0 20px;gap:16px;}
+    .gift-card{padding:18px 18px 16px;}
+    .gift-card h4{font-size:19px;}
+
+    .polaroid-section{padding:76px 20px 84px;gap:34px;}
+    .polaroid{width:min(230px,78vw);}
+
+    .rsvp-section{padding:90px 20px 100px;}
+    .rsvp-title{font-size:clamp(28px,8vw,38px);margin:26px auto 40px;}
+    .rsvp-btn{padding:16px 38px;font-size:12px;width:100%;max-width:340px;}
+
+    footer{padding:34px 20px;font-size:11px;}
+  }
+
+  /* toque confortável em telas sensíveis */
+  @media(hover:none){
+    .copy-btn{padding:8px 6px;}
+    .nav-links a{padding:6px 0;}
+  }
 </style>
 </head>
 <body>
@@ -296,7 +363,20 @@
 </nav>
 
 <!-- HERO — foto de capa com nomes e data -->
-<section class="hero" id="inicio" aria-label="Renata Ossanai & Victor Cescani — 24.10.2026 — Porto Alegre"></section>
+<section class="hero" id="inicio" aria-label="Renata Ossanai & Victor Cescani — 24.10.2026 — Porto Alegre">
+  <!-- Texto que aparece só no celular (no computador, a data e os nomes já estão na foto) -->
+  <div class="hero-mobile-text">
+    <div class="hm-divider">
+      <svg viewBox="0 0 140 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 14 C 20 4, 35 20, 50 12 C 62 6, 70 16, 70 16 C 70 16, 78 6, 90 12 C 105 20, 120 4, 138 14" stroke="#e9e5d6" stroke-width="1"/>
+        <path d="M30 10 C 32 6, 36 6, 36 10 C 36 13, 32 13, 30 10Z" fill="#e9e5d6"/>
+        <path d="M104 10 C 106 6, 110 6, 110 10 C 110 13, 106 13, 104 10Z" fill="#e9e5d6"/>
+      </svg>
+    </div>
+    <div class="hm-date">24/10/2026</div>
+    <div class="hm-names">Renata Ossanai &amp; Victor Cescani</div>
+  </div>
+</section>
 
 <!-- QUOTE + CONTAGEM REGRESSIVA -->
 <section class="intro-section">
