@@ -15,7 +15,7 @@
   :root{
     --hero-image: url('hero-capa.jpg');            /* 📷 foto de capa (computador) */
     --hero-image-mobile: url('hero-capa-mobile.jpg'); /* 📱 foto de capa (celular) */
-    --intro-bg-image: url('textura-papel-grande.jpeg'); /* 📄 fundo da seção da frase + contagem regressiva */
+    --intro-bg-image: url('textura-papel-grande.jpg'); /* 📄 fundo da seção da frase + contagem regressiva */
     --intro-bg-size: 700px auto;                   /* tamanho da textura da contagem (aumente/diminua o 700px) */
     --venue-bg-image: url('textura-papel.jpg');    /* 📄 fundo da seção Programação e Localização */
     --venue-bg-size: 520px auto;                   /* tamanho da textura (aumente/diminua o 520px) */
@@ -311,6 +311,24 @@
   }
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
+  /* ===== TRAJE ===== */
+  .dress-section{
+    padding:80px 24px;text-align:center;
+    background-color:var(--cream);
+    background-image:
+      linear-gradient(180deg, rgba(244,242,234,0.55), rgba(244,242,234,0.62)),
+      var(--intro-bg-image);
+    background-size:auto, var(--intro-bg-size);
+    background-repeat:no-repeat, repeat;
+  }
+  .dress-section h3{
+    font-family:'Cormorant Garamond', serif;font-weight:500;
+    font-size:clamp(26px,3.4vw,36px);color:var(--ink-deep);margin-top:12px;
+  }
+  .dress-section p{
+    max-width:440px;margin:12px auto 0;font-size:16px;color:#4b543e;
+  }
+
   /* ===== AJUSTES PARA CELULAR ===== */
   @media(max-width:640px){
     body{font-size:16.5px;}
@@ -336,6 +354,8 @@
     .gift-grid{margin-top:48px;padding:0 20px;gap:16px;}
     .gift-card{padding:18px 18px 16px;}
     .gift-card h4{font-size:19px;}
+
+    .dress-section{padding:60px 20px;}
 
     .polaroid-section{padding:76px 20px 84px;gap:34px;}
     .polaroid{width:min(230px,78vw);}
@@ -604,6 +624,13 @@
     </div>
 
   </div>
+</section>
+
+<!-- TRAJE -->
+<section class="dress-section" id="traje">
+  <div class="eyebrow">Traje</div>
+  <h3>Social Completo</h3>
+  <p>Terno com gravata e sapato social para eles, vestido longo para elas.</p>
 </section>
 
 <!-- POLAROIDS — O PEDIDO -->
